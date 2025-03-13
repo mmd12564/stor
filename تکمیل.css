@@ -1,0 +1,1120 @@
+/* ===== متغیرهای CSS ===== */
+:root {
+    /* رنگ‌های اصلی */
+    --primary-color: #3366ff;
+    --primary-dark: #2952cc;
+    --primary-light: #668cff;
+    --secondary-color: #ff6633;
+    --success-color: #00cc66;
+    --danger-color: #ff3333;
+    --warning-color: #ffcc00;
+    --info-color: #33ccff;
+    
+    /* رنگ‌های خنثی */
+    --dark: #333333;
+    --medium-dark: #666666;
+    --medium: #999999;
+    --light-medium: #cccccc;
+    --light: #f0f0f0;
+    --white: #ffffff;
+    
+    /* سایه‌ها */
+    --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 8px rgba(0, 0, 0, 0.1);
+    --shadow-lg: 0 8px 16px rgba(0, 0, 0, 0.15);
+    
+    /* گرد گوشه‌ها */
+    --radius-sm: 4px;
+    --radius-md: 8px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
+    
+    /* فاصله‌ها */
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+    
+    /* انیمیشن‌ها */
+    --transition-fast: 0.2s ease;
+    --transition-normal: 0.3s ease;
+    --transition-slow: 0.5s ease;
+    
+    /* فونت‌ها */
+    --font-family: 'Vazirmatn', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    
+    /* اندازه‌های کارت */
+    --card-width: 360px;
+    --card-height: 220px;
+}
+
+/* ===== تنظیمات پایه ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-family);
+    background-color: #f8f9fa;
+    color: var(--dark);
+    line-height: 1.6;
+    direction: rtl;
+    text-align: right;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: var(--spacing-md);
+}
+
+/* ===== کانتینر اصلی ===== */
+.smart-payment {
+    width: 100%;
+    max-width: 800px;
+    background-color: var(--white);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+    overflow: hidden;
+    position: relative;
+}
+
+/* ===== هدر ===== */
+.smart-header {
+    background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+    color: var(--white);
+    padding: var(--spacing-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-md);
+}
+
+.merchant-details {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+}
+
+.merchant-logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    background-color: var(--white);
+    padding: var(--spacing-xs);
+}
+
+.merchant-name {
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    margin-bottom: var(--spacing-xs);
+}
+
+.transaction-info {
+    display: flex;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+}
+
+.timer {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.pulse {
+    animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+.amount-display {
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    backdrop-filter: blur(5px);
+}
+
+.amount-label {
+    display: block;
+    font-size: var(--font-size-sm);
+    margin-bottom: var(--spacing-xs);
+    opacity: 0.9;
+}
+
+.amount-value {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+}
+
+/* ===== روش‌های پرداخت ===== */
+.payment-methods {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
+    background-color: var(--light);
+    border-bottom: 1px solid var(--light-medium);
+}
+
+.method {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+    flex: 1;
+    max-width: 150px;
+    text-align: center;
+}
+
+.method i {
+    font-size: var(--font-size-2xl);
+    margin-bottom: var(--spacing-xs);
+    color: var(--medium-dark);
+}
+
+.method span {
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+.method.active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    box-shadow: var(--shadow-md);
+}
+
+.method.active i {
+    color: var(--white);
+}
+
+.method:hover:not(.active) {
+    background-color: var(--light-medium);
+}
+
+/* ===== کارت هوشمند ===== */
+.smart-card {
+    padding: var(--spacing-lg);
+    display: flex;
+    justify-content: center;
+    perspective: 1000px;
+}
+
+.card-wrapper {
+    width: var(--card-width);
+    height: var(--card-height);
+    position: relative;
+    transition: transform var(--transition-normal);
+    transform-style: preserve-3d;
+}
+
+.card-wrapper.flipped {
+    transform: rotateY(180deg);
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform-style: preserve-3d;
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-lg);
+}
+
+.card-front, .card-back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    backface-visibility: hidden;
+    border-radius: var(--radius-lg);
+    padding: var(--spacing-lg);
+    background: linear-gradient(135deg, #2b2d42, #121420);
+    color: var(--white);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.card-back {
+    transform: rotateY(180deg);
+}
+
+.card-type {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chip {
+    width: 45px;
+    height: 35px;
+    background: linear-gradient(135deg, #ffd700, #b8860b);
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+}
+
+.chip-line {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.3);
+    height: 5px;
+}
+
+.chip-line:nth-child(1) {
+    width: 100%;
+    top: 5px;
+}
+
+.chip-line:nth-child(2) {
+    width: 100%;
+    top: 15px;
+}
+
+.chip-line:nth-child(3) {
+    width: 100%;
+    top: 25px;
+}
+
+.chip-line:nth-child(4) {
+    width: 70%;
+    top: 15px;
+    left: 15%;
+    transform: rotate(90deg);
+}
+
+.chip-main {
+    position: absolute;
+    width: 60%;
+    height: 70%;
+    background: linear-gradient(135deg, #e6c200, #ffd700);
+    top: 15%;
+    left: 20%;
+    border-radius: 3px;
+}
+
+.card-brand {
+    width: 60px;
+    height: 40px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.card-number-wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin: var(--spacing-md) 0;
+    font-size: var(--font-size-xl);
+    font-weight: 600;
+    letter-spacing: 2px;
+}
+
+.card-number-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-details {
+    display: flex;
+    justify-content: space-between;
+    font-size: var(--font-size-sm);
+}
+
+.card-holder, .card-expires {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.card-holder label, .card-expires label {
+    opacity: 0.7;
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+}
+
+.bank-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    opacity: 0.9;
+}
+
+.bank-info img {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background-color: var(--white);
+    padding: 2px;
+}
+
+/* نمای پشت کارت */
+.magnetic-strip {
+    width: 100%;
+    height: 40px;
+    background-color: #333;
+    margin: var(--spacing-md) 0;
+}
+
+.signature-panel {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-sm);
+    margin-bottom: var(--spacing-md);
+}
+
+.cvv-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
+}
+
+.cvv-wrapper label {
+    font-size: var(--font-size-xs);
+    opacity: 0.7;
+}
+
+.cvv-number {
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+.card-networks {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-md);
+}
+
+.network-logo {
+    width: 40px;
+    height: 25px;
+    object-fit: contain;
+}
+
+/* ===== پرداخت با QR کد ===== */
+.qr-payment-section {
+    display: none;
+    padding: var(--spacing-lg);
+    text-align: center;
+}
+
+.qr-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+#qrCode {
+    width: 200px;
+    height: 200px;
+    background-color: var(--white);
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-md);
+    margin: 0 auto;
+}
+
+.qr-refresh {
+    margin-top: var(--spacing-md);
+}
+
+.refresh-qr-btn {
+    background-color: var(--light);
+    border: none;
+    border-radius: var(--radius-md);
+    padding: var(--spacing-sm) var(--spacing-md);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    transition: all var(--transition-fast);
+}
+
+.refresh-qr-btn:hover {
+    background-color: var(--light-medium);
+}
+
+.qr-instructions {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.qr-instructions h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.qr-instructions p {
+    margin-bottom: var(--spacing-lg);
+    color: var(--medium-dark);
+}
+
+.accepted-apps {
+    display: flex;
+    justify-content: center;
+    gap: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.accepted-apps img {
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ===== پرداخت با کیف پول ===== */
+.wallet-payment-section {
+    display: none;
+    padding: var(--spacing-lg);
+}
+
+.wallet-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-lg);
+    max-width: 400px;
+    margin: 0 auto;
+    padding: var(--spacing-lg);
+    background-color: var(--light);
+    border-radius: var(--radius-lg);
+}
+
+.wallet-balance {
+    text-align: center;
+    width: 100%;
+}
+
+.wallet-balance h3 {
+    margin-bottom: var(--spacing-md);
+    color: var(--primary-color);
+}
+
+.balance-amount {
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    margin-bottom: var(--spacing-md);
+}
+
+.wallet-status {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
+
+.wallet-status.available {
+    background-color: rgba(0, 204, 102, 0.1);
+    color: var(--success-color);
+}
+
+.wallet-status.insufficient {
+    background-color: rgba(255, 51, 51, 0.1);
+    color: var(--danger-color);
+}
+
+.wallet-pay-button {
+    width: 100%;
+    padding: var(--spacing-md);
+    background-color: var(--success-color);
+    color: var(--white);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var(--spacing-md);
+    transition: all var(--transition-fast);
+}
+
+.wallet-pay-button:hover {
+    background-color: #00b359;
+}
+
+.wallet-pay-button:active {
+    transform: scale(0.98);
+}
+
+/* ===== فرم هوشمند ===== */
+.smart-form {
+    padding: var(--spacing-lg);
+    border-top: 1px solid var(--light-medium);
+}
+
+.form-progress {
+    margin-bottom: var(--spacing-xl);
+}
+
+.progress-bar {
+    height: 6px;
+    background-color: var(--light);
+    border-radius: 3px;
+    margin-bottom: var(--spacing-md);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: var(--primary-color);
+    width: 0;
+    transition: width var(--transition-normal);
+}
+
+.progress-steps {
+    display: flex;
+    justify-content: space-between;
+}
+
+.step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    width: 33.333%;
+    position: relative;
+    color: var(--medium);
+    transition: color var(--transition-normal);
+}
+
+.step i {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light);
+    color: var(--medium);
+    border-radius: 50%;
+    margin-bottom: var(--spacing-xs);
+    transition: all var(--transition-normal);
+}
+
+.step span {
+    font-size: var(--font-size-xs);
+    font-weight: 500;
+}
+
+.step.active {
+    color: var(--primary-color);
+}
+
+.step.active i {
+    background-color: var(--primary-color);
+    color: var(--white);
+}
+
+.step.completed i {
+    background-color: var(--success-color);
+    color: var(--white);
+}
+
+.step.completed i::before {
+    content: "\f00c";
+}
+
+/* بخش‌های فرم */
+.form-sections {
+    position: relative;
+    min-height: 300px;
+}
+
+.form-section {
+    display: none;
+    animation: fadeIn var(--transition-normal);
+}
+
+.form-section.active {
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* گروه‌های ورودی */
+.input-group {
+    margin-bottom: var(--spacing-lg);
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: var(--spacing-sm);
+    font-weight: 500;
+    color: var(--medium-dark);
+}
+
+.input-group input[type="text"],
+.input-group input[type="password"] {
+    width: 100%;
+    padding: var(--spacing-md);
+    border: 1px solid var(--light-medium);
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    transition: border-color var(--transition-fast);
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(51, 102, 255, 0.2);
+}
+
+.input-hint {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    margin-top: var(--spacing-xs);
+    font-size: var(--font-size-xs);
+    color: var(--medium);
+}
+
+.validation-message {
+    font-size: var(--font-size-xs);
+    color: var(--danger-color);
+    margin-top: var(--spacing-xs);
+    min-height: 18px;
+}
+
+/* شماره کارت */
+.segmented-input {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.segment {
+    flex: 1;
+    text-align: center;
+    font-family: monospace;
+    letter-spacing: 2px;
+}
+
+/* تاریخ انقضا و CVV */
+.input-row {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.input-row .input-group {
+    flex: 1;
+}
+
+.expiry-inputs {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+}
+
+.expiry-inputs input {
+    width: 60px;
+    text-align: center;
+}
+
+.divider {
+    font-size: var(--font-size-lg);
+    color: var(--medium);
+}
+
+.cvv-input {
+    position: relative;
+}
+
+.toggle-cvv {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: var(--medium);
+    cursor: pointer;
+    padding: var(--spacing-xs);
+}
+
+.toggle-cvv:hover {
+    color: var(--medium-dark);
+}
+
+/* کارت‌های ذخیره شده */
+.card-saved-options {
+    margin-top: var(--spacing-lg);
+}
+
+.option-label {
+    font-size: var(--font-size-sm);
+    color: var(--medium-dark);
+    margin-bottom: var(--spacing-sm);
+}
+
+.saved-cards {
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    padding-bottom: var(--spacing-sm);
+}
+
+.saved-card {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm) var(--spacing-md);
+    background-color: var(--light);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.saved-card:hover {
+    background-color: var(--light-medium);
+}
+
+.saved-card-logo {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.saved-card-logo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.saved-card-number {
+    font-family: monospace;
+    font-size: var(--font-size-sm);
+}
+
+/* چک‌باکس‌ها */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    background-color: var(--light);
+    border: 1px solid var(--light-medium);
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+.checkbox-container:hover .checkmark {
+    background-color: var(--light-medium);
+}
+
+.checkbox-container input:checked ~ .checkmark {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+    left: 7px;
+    top: 3px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+.checkbox-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.checkbox-text {
+    font-size: var(--font-size-sm);
+}
+
+.terms-link {
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.terms-link:hover {
+    text-decoration: underline;
+}
+
+/* دکمه‌ها */
+.button-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--spacing-xl);
+}
+
+.next-button, .back-button, .submit-button {
+    padding: var(--spacing-md) var(--spacing-lg);
+    border: none;
+    border-radius: var(--radius-md);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    transition: all var(--transition-fast);
+}
+
+.next-button {
+    background-color: var(--primary-color);
+    color: var(--white);
+    margin-right: auto;
+}
+
+.next-button:hover:not(:disabled) {
+    background-color: var(--primary-dark);
+}
+
+.back-button {
+    background-color: var(--light);
+    color: var(--medium-dark);
+}
+
+.back-button:hover {
+    background-color: var(--light-medium);
+}
+
+.submit-button {
+    background-color: var(--success-color);
+    color: var(--white);
+    position: relative;
+    padding-right: var(--spacing-xl);
+}
+
+.submit-button:hover:not(:disabled) {
+    background-color: #00b359;
+}
+
+.submit-button .loader {
+    position: absolute;
+    top: 50%;
+    right: 15px;
+    transform: translateY(-50%);
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: var(--white);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-fast);
+}
+
+.submit-button.loading .loader {
+    opacity: 1;
+    visibility: visible;
+    animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: translateY(-50%) rotate(360deg); }
+}
+
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+/* بخش تایید نهایی */
+.confirmation-details {
+    background-color: var(--light);
+    padding: var(--spacing-lg);
+    border-radius: var(--radius-md);
+    margin-bottom: var(--spacing-lg);
+}
+
+.confirmation-details h3 {
+    margin-bottom: var(--spacing-lg);
+    color: var(--primary-color);
+    text-align: center;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    padding: var(--spacing-sm) 0;
+    border-bottom: 1px solid var(--light-medium);
+}
+
+.detail-row:last-child {
+    border-bottom: none;
+}
+
+.detail-row span {
+    color: var(--medium-dark);
+}
+
+.transaction-details {
+    margin-top: var(--spacing-lg);
+    padding-top: var(--spacing-md);
+    border-top: 1px dashed var(--light-medium);
+}
+
+/* فوتر */
+.smart-footer {
+    background-color: var(--light);
+    padding: var(--spacing-lg);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-lg);
+    border-top: 1px solid var(--light-medium);
+}
+
+.security-badges {
+    display: flex;
+    gap: var(--spacing-lg);
+}
+
+.badge {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    font-size: var(--font-size-sm);
+    color: var(--medium-dark);
+}
+
+.badge i {
+    color: var(--primary-color);
+}
+
+.support-info {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-sm);
+    color: var(--medium-dark);
+}
+
+.support-phone {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.trusted-by {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-md);
+    font-size: var(--font-size-sm);
+    color: var(--medium-dark);
+}
+
+.trust-logos {
+    display: flex;
+    gap: var(--spacing-md);
+}
+
+.trust-logos img {
+    height: 30px;
+    width: auto;
+}
+
+/* ===== ریسپانسیو ===== */
+@media (max-width: 768px) {
+    .smart-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
+    .amount-display {
+        width: 100%;
+    }
+    
+    .payment-methods {
+        flex-wrap: wrap;
+    }
+    
+    .method {
+        min-width: 100px;
+    }
+    
+    .input-row {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+    
+    .button-group {
+        flex-direction: column-reverse;
+        gap: var(--spacing-md);
+    }
+    
+    .next-button, .back-button, .submit-button {
+        width: 100%;
+        justify-content: center;
+    }
+    
+    .smart-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 0;
+    }
+}
+    
